@@ -7,6 +7,7 @@
 #include <list>
 #include <string>
 #include <QObject>
+#include <QTimer>
 
 
 class Meneger: public QObject
@@ -14,8 +15,15 @@ class Meneger: public QObject
     Q_OBJECT
 
 protected:
-    Meneger(){};
-    ~Meneger(){};
+    Meneger(){
+        QTimer* tmr = new QTimer(this);
+        QObject::connect(tmr, SIGNAL (timeout()), this, SLOT(anythingChanged()));
+        tmr->start(1000);
+    };
+
+    ~Meneger(){
+
+    };
     static Meneger* singleton_;
 
     std::string value_;
