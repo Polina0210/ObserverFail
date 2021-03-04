@@ -18,11 +18,11 @@
 
 using namespace std;
 
-void PrintFile(Meneger meneger){
-    for (int i=0; i< meneger.fileNames.size(); i++){
-    QTextStream(stdout)<<"Fail name"<<i<<":" << meneger.fileNames[i] << endl;
-    QTextStream(stdout)<<"Fail exist"<<i<<":" << meneger.fileExist[i] << endl;
-    QTextStream(stdout)<<"Fail size"<<i<<":" << meneger.fileSize[i] << endl;
+void PrintFile(Meneger *meneger){
+    for (int i=0; i< meneger->CountOfFiles(); i++){
+    QTextStream(stdout)<<"Fail name"<<i<<":" << meneger->InfoName(i) << endl;
+    QTextStream(stdout)<<"Fail exist"<<i<<":" << meneger->InfoExist(i) << endl;
+    QTextStream(stdout)<<"Fail size"<<i<<":" << meneger->InfoSize(i) << endl;
     }
 }
 
@@ -45,10 +45,10 @@ int main(int argc, char *argv[])
 
     QTextStream cout(stdout), cin(stdin); //для ввода-вывода
 
-    Meneger *meneger = Meneger::getInstance();
+    Meneger *meneger = Meneger::GetInstance();
 
 
-   AddFiles(meneger);
+    AddFiles(meneger);
 
     std::cout<<"Enter file name for observer"<<endl;
     QString nameObs = cin.readLine().trimmed().toLower();

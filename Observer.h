@@ -16,6 +16,7 @@ using namespace std;
 class Observer: public QObject
 {
     Q_OBJECT
+
  public:
 
   Observer(QString a = " ", bool b = false, qint32 c = 0)
@@ -33,7 +34,6 @@ class Observer: public QObject
       name = newname;
       emit requestInformation(name,exist,size);
   };
-
 
 signals:
 

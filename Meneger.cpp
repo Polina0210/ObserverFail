@@ -6,7 +6,7 @@
 
 Meneger* Meneger:: singleton_= nullptr;  //нулевой указатель
 
-Meneger *Meneger::getInstance() //получение экземпляра файлового менеджера
+Meneger *Meneger::GetInstance() //получение экземпляра файлового менеджера
 {
     if(singleton_ == nullptr){
        singleton_ = new Meneger();
@@ -70,4 +70,5 @@ void Meneger::giveInformation(QString name,bool exist,qint32 size){
          {emit FileChanged(fileNames[i],fileExist[i],fileSize[i]);}
      }
    }
+
 
